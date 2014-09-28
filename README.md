@@ -31,3 +31,10 @@ Testing:
 	At the end of the file FaceIn.pl, we used fifteen tests functions to test all the functions we created.
 	Depending of the tests, it could return either a boolean result (true/false), a list or an atom.
 	Testing have been done one function with known and unknown parameters in all cases except clique which would lead to infinite recursion.
+
+Usage
+-----
+	
+```prolog
+	run_tests.
+```
