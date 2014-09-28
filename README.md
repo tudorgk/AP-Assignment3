@@ -20,12 +20,8 @@ We thought also that the functions selec (equivalent of select/3), subset and pe
 
 We created the build_person_list function thinking that it can be good to use it for the clique function. Finally we didn't use it, but it may be good to use it for other functions.
 
-The function clique is not correctly implemented.
-It will produce the correct result if the parameters are known.
-If not, it will work but only for pairs (two people).
-If there are more people concerned, there might be an infinite loop.
+The function clique is not correctly implemented, there might be an infinite loop.
 We didn't find how to resolve this (yet).
-This function uses memb, selec and subset.
 
 Testing:
 	At the end of the file FaceIn.pl, we used fifteen tests functions to test all the functions we created.
