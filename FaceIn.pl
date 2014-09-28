@@ -38,14 +38,22 @@ permutation(List, [Element | Permutation]) :-
 %subset
 subset([], []).
 subset([E|Tail], [E|NTail]):-
-  subset(Tail, NTail).
+	subset(Tail, NTail).
 subset([_|Tail], NTail):-
-  subset(Tail, NTail).
+  	subset(Tail, NTail).
 
-%bang bang cliquety clack clack
-clique(G,[X|L]) :-
-	memb(person(X,W),G),
-	subset(L,W).
+%% checks if this friend is goodfriend with all these friends
+goodFriendWith(G, FriendOne, [FriendTwo]):-
+	goodfriends(G, FriendOne, FriendTwo).
+goodFriendWith(G, FriendOne, [FriendTwo | FriendList]):-
+	goodFriendWith(G, FriendOne, FriendList),
+ 	goodfriends(G, FriendOne, FriendTwo).
+
+clique(G, [FriendOne, FriendTwo]):-
+ 	goodfriends(G, FriendOne, FriendTwo).
+clique(G, [FriendOne | FriendList]):-
+  	clique(G, FriendList),	
+  	goodFriendWith(G, FriendOne, FriendList).
 
 %% clique2([person(X,XFriends),person(X,XFriends)],[]):-
 %% 	.
