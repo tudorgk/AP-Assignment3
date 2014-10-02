@@ -39,6 +39,14 @@ wannabe(G, X):-
 
 We build a list with all the people in the graph. We then check that `X` can reach all the people in the graph. In the `check_all` predicate we use a helper predicate for checking if `Person1` is reachable to each person in the list. The `reachable` predicate checks if the person is a member in the other people's friend list, and then recursively calls itself without the new graph.
 
+
+#### `wannabe` predicate
+```prolog
+%TODO
+idol(G, X).
+```
+TODO
+
 Testing
 -------
 	At the end of the file FaceIn.pl, we used fifteen tests functions to test all the functions we created.
