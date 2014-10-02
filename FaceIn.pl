@@ -53,7 +53,7 @@ subset([E|Tail], [E|NTail]):-
 subset([_|Tail], NTail):-
   	subset(Tail, NTail).
 
-%% checks if this friend is goodfriend with all these friends
+%% %% checks if this friend is goodfriend with all these friends
 goodFriendWith(G, FriendOne, [FriendTwo]):-
 	goodfriends(G, FriendOne, FriendTwo).
 goodFriendWith(G, FriendOne, [FriendTwo | FriendList]):-
@@ -66,10 +66,38 @@ clique(G, [FriendOne, FriendTwo]):-
 clique(G, [FriendOne | FriendList]):-
   	clique(G, FriendList),	
   	goodFriendWith(G, FriendOne, FriendList).
+%creates the good friends list of the person X
 
+%% goodfriendslist(_, _, []).
+%% goodfriendslist(G, X, [H|T]):-
+%% 	goodfriends(G, X, H),
+%% 	goodfriendslist(G, X, T).
+
+%clique function using the good friends list
+%% clique(_, []).
+%% clique(G, [H|T]):-
+%% 	goodfriendslist(G, H, T),
+%% 	clique(G, T).
 
 %for the wannabe we should implement a DFS search and check if X
 %can reach all the other people
+
+reachable_helper(G,Person1,Person2,[H|T]):-
+	is_friend(G,Person1,H),
+	reachable_helper(G,H,Person2, T).
+
+reachable_helper(G, Person1,Person1, List).
+reachable_helper(G, Person1, Person2, [H | List]) :-
+	reachable_helper(G, Person1, Person2, List).
+reachable_helper(G, Person1, Person2, [Person | List]):-
+	is_friend(G,Person1,Person),
+	is_friend(G,Person, Person2).
+
+reachable(G,Person1,Person1).
+reachable(G, Person1, Person2):-
+	build_person_list(G,List),
+	reachable_helper(G, Person1,Person2,List).
+
 %% wannabe([person(Person,Friends)], X):-
 %% wannabe([person(Person,Friends) | _],X) :-
 
