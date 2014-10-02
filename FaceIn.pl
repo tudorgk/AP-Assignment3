@@ -1,4 +1,4 @@
-% Author : Tudor Dragan 
+% Author : Tudor Dragan & Yoann Moise
 
 :- use_module(library(plunit)).
 
