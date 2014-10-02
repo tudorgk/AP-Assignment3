@@ -134,18 +134,3 @@ test(clique_false1,[fail]):-
 	clique(G,[ken,susan]).
 :- end_tests(friendtest).
 
-%% comparing all elemts to head
-small([M|T],X):- small1(T, M, X).
-
-small1([H|_], M ,H):- H =< M.
-small1([_|T], M, X):- small1(T, M, X).
-
-%for debugging
-print_all([]).
-print_all([X|Rest]) :- write(X), nl, print_all(Rest).
-
-%implemented map, but I don't use it
-maplist(_C_2, [], []).
-maplist( C_2, [X|Xs], [Y|Ys]) :-
-   call(C_2, X, Y),
-   maplist( C_2, Xs, Ys).
